@@ -20,7 +20,7 @@ Clone and build the project
 
 # Classes
 
-TODO
+![Alt text](https://github.com/omerio/unit-testing/blob/master/classes.png "Class Diagram")
 
 # Test Coverage
 
