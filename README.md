@@ -1,6 +1,8 @@
 # Summary
 
-[![CircleCI](https://circleci.com/gh/omerio/unit-testing.svg?style=svg)](https://circleci.com/gh/omerio/unit-testing) [![codecov](https://codecov.io/gh/omerio/unit-testing/branch/master/graph/badge.svg)](https://codecov.io/gh/omerio/unit-testing)
+[![CircleCI](https://circleci.com/gh/omerio/unit-testing.svg?style=svg)](https://circleci.com/gh/omerio/unit-testing) 
+[![codecov](https://codecov.io/gh/omerio/unit-testing/branch/master/graph/badge.svg)](https://codecov.io/gh/omerio/unit-testing)
+[![Sonar](https://sonarcloud.io/api/project_badges/measure?project=com.omerio%3Aunit-testing&metric=alert_status)](https://sonarcloud.io/dashboard?id=com.omerio%3Aunit-testing)
 
 An example that demonstrates mocking using [jMockit](http://jmockit.github.io/) and [Mockito](https://github.com/mockito/mockito) + [PowerMock](https://github.com/powermock/powermock/wiki/Mockito) for a standard Java Spring application with JPA persistence
 
