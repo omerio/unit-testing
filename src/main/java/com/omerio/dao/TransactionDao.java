@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.dao;
 
 import com.omerio.model.Transaction;
@@ -10,7 +7,7 @@ import com.omerio.model.Transaction;
  *
  */
 public interface TransactionDao {
-	
-	Transaction save(Transaction txn);
+
+    Transaction save(Transaction txn);
 
 }

@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.model;
 
 import java.io.Serializable;
@@ -23,127 +20,137 @@ import javax.persistence.TemporalType;
 @Entity
 public class Transaction implements Serializable {
 
-	private static final long serialVersionUID = -1982058097348765461L;
+    private static final long serialVersionUID = -1982058097348765461L;
 
     @Id
     @GeneratedValue
-	private Long id;
-	
-	private String reference;
-	
-	@Temporal(TemporalType.TIMESTAMP)
-	private Date date;
-	
-	private BigDecimal amount;
-	
-	private BigDecimal serviceFees;
-	
-	private BigDecimal tax;
-	
-	private BigDecimal deliveryCharge;
-	
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	private Seller seller;
+    private Long id;
 
-	@ManyToOne(optional = false, fetch = FetchType.EAGER)
-	private Customer customer;
-	
-	/**
-	 * Calculate the net amount received by the seller
-	 * @return
-	 */
-	public BigDecimal calculateSellerNetAmount() {
-		BigDecimal net = BigDecimal.ZERO;
-		
-		if(amount != null) {
-			net = net.add(amount);
-		}
-		
-		if(serviceFees != null) {
-			net = net.subtract(serviceFees);
-		}
-		
-		if(tax != null) {
-			net = net.subtract(tax);
-		}
-		
-		if(deliveryCharge != null) {
-			net = net.add(deliveryCharge);
-		}
-		
-		return net.setScale(2, RoundingMode.HALF_UP);
-	}
-	
-	public Long getId() {
-		return id;
-	}
+    private String reference;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    @Temporal(TemporalType.TIMESTAMP)
+    private Date date;
 
-	public String getReference() {
-		return reference;
-	}
+    private BigDecimal amount;
 
-	public void setReference(String reference) {
-		this.reference = reference;
-	}
+    private BigDecimal serviceFees;
 
-	public Date getDate() {
-		return date;
-	}
+    private BigDecimal tax;
 
-	public void setDate(Date date) {
-		this.date = date;
-	}
+    private BigDecimal deliveryCharge;
 
-	public BigDecimal getAmount() {
-		return amount;
-	}
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Seller seller;
 
-	public void setAmount(BigDecimal amount) {
-		this.amount = amount;
-	}
+    @ManyToOne(optional = false, fetch = FetchType.EAGER)
+    private Customer customer;
 
-	public BigDecimal getServiceFees() {
-		return serviceFees;
-	}
+    /**
+     * Calculate the net amount received by the seller
+     * @return - the net amount paid to the seller
+     */
+    public BigDecimal calculateSellerNetAmount() {
+        BigDecimal net = BigDecimal.ZERO;
 
-	public void setServiceFees(BigDecimal serviceFees) {
-		this.serviceFees = serviceFees;
-	}
+        if(amount != null) {
+            net = net.add(amount);
+        }
 
-	public BigDecimal getTax() {
-		return tax;
-	}
+        if(serviceFees != null) {
+            net = net.subtract(serviceFees);
+        }
 
-	public void setTax(BigDecimal tax) {
-		this.tax = tax;
-	}
+        if(tax != null) {
+            net = net.subtract(tax);
+        }
 
-	public BigDecimal getDeliveryCharge() {
-		return deliveryCharge;
-	}
+        if(deliveryCharge != null) {
+            net = net.add(deliveryCharge);
+        }
 
-	public void setDeliveryCharge(BigDecimal deliveryCharge) {
-		this.deliveryCharge = deliveryCharge;
-	}
+        return net.setScale(2, RoundingMode.HALF_UP);
+    }
 
-	public Seller getSeller() {
-		return seller;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public void setSeller(Seller seller) {
-		this.seller = seller;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public Customer getCustomer() {
-		return customer;
-	}
+    public String getReference() {
+        return reference;
+    }
 
-	public void setCustomer(Customer customer) {
-		this.customer = customer;
-	}
+    public void setReference(String reference) {
+        this.reference = reference;
+    }
+
+    public Date getDate() {
+        // http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP
+        if(this.date != null) {
+            return new Date(this.date.getTime());
+        } else {
+            return null;
+        }
+    }
+
+    public void setDate(Date date) {
+     // http://findbugs.sourceforge.net/bugDescriptions.html#EI_EXPOSE_REP
+        if(date != null) {
+            this.date = new Date(date.getTime());
+        } else {
+            this.date = null;
+        }
+    }
+
+    public BigDecimal getAmount() {
+        return amount;
+    }
+
+    public void setAmount(BigDecimal amount) {
+        this.amount = amount;
+    }
+
+    public BigDecimal getServiceFees() {
+        return serviceFees;
+    }
+
+    public void setServiceFees(BigDecimal serviceFees) {
+        this.serviceFees = serviceFees;
+    }
+
+    public BigDecimal getTax() {
+        return tax;
+    }
+
+    public void setTax(BigDecimal tax) {
+        this.tax = tax;
+    }
+
+    public BigDecimal getDeliveryCharge() {
+        return deliveryCharge;
+    }
+
+    public void setDeliveryCharge(BigDecimal deliveryCharge) {
+        this.deliveryCharge = deliveryCharge;
+    }
+
+    public Seller getSeller() {
+        return seller;
+    }
+
+    public void setSeller(Seller seller) {
+        this.seller = seller;
+    }
+
+    public Customer getCustomer() {
+        return customer;
+    }
+
+    public void setCustomer(Customer customer) {
+        this.customer = customer;
+    }
 
 }

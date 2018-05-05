@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.dao;
 
 import com.omerio.model.Customer;
@@ -10,8 +7,8 @@ import com.omerio.model.Customer;
  *
  */
 public interface CustomerDao {
-	
 
-	Customer findById(Long customerId);
+
+    Customer findById(Long customerId);
 
 }

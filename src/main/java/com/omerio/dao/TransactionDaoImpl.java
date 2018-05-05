@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.dao;
 
 import javax.persistence.EntityManager;
@@ -19,24 +16,30 @@ import com.omerio.model.Transaction;
 @Repository
 @Transactional
 public class TransactionDaoImpl implements TransactionDao {
-	
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	@Transactional(propagation=Propagation.REQUIRED, readOnly=false)
-	public Transaction save(Transaction txn) {
-		if (txn != null)   {
 
-			if (txn.getId() == null)   {
-				// new
-				entityManager.persist(txn);
-			}   else    {
-				// update
-				txn = entityManager.merge(txn);
-			}
-		}
-		
-		return txn;
-	}
+    @PersistenceContext
+    private EntityManager entityManager;
+
+
+    /**
+     * Save a transaction
+     * @param txn - the transaction to save 
+     * @return - the saved transaction
+     */
+    @Transactional(propagation=Propagation.REQUIRED, readOnly=false)
+    public Transaction save(Transaction txn) {
+        if (txn != null)   {
+
+            if (txn.getId() == null)   {
+                // new
+                entityManager.persist(txn);
+            }   else    {
+                // update
+                txn = entityManager.merge(txn);
+            }
+        }
+
+        return txn;
+    }
 
 }

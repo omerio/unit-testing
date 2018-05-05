@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.dao;
 
 import com.omerio.model.Seller;
@@ -10,12 +7,12 @@ import com.omerio.model.Seller;
  *
  */
 public interface SellerDao {
-	
-	/**
-	 * Find a particular Seller by id
-	 * @param sellerId
-	 * @return
-	 */
-	Seller findById(Long sellerId);
+
+    /**
+     * Find a particular Seller by id
+     * @param sellerId - the id of the seller
+     * @return - the seller if found otherwise null
+     */
+    Seller findById(Long sellerId);
 
 }

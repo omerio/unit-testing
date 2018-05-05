@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.dao;
 
 import javax.persistence.EntityManager;
@@ -18,12 +15,12 @@ import com.omerio.model.Customer;
 @Repository
 @Transactional
 public class CustomerDaoImpl implements CustomerDao {
-	
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	public Customer findById(Long customerId) {
-		return entityManager.find(Customer.class, customerId);
-	}
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public Customer findById(Long customerId) {
+        return entityManager.find(Customer.class, customerId);
+    }
 
 }

@@ -7,28 +7,31 @@
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 		<spring.version>4.3.1.RELEASE</spring.version>
+		<powermock.version>1.7.4</powermock.version>
+		<mockito.version>2.18.3</mockito.version>
+		<jmockit.version>1.39</jmockit.version>
 	</properties>
 
 	<dependencies>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-context</artifactId>
-		    <version>${spring.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-context</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.springframework</groupId>
-		    <artifactId>spring-tx</artifactId>
-		    <version>${spring.version}</version>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-tx</artifactId>
+			<version>${spring.version}</version>
 		</dependency>
 		<dependency>
-		    <groupId>org.hibernate</groupId>
-		    <artifactId>hibernate-entitymanager</artifactId>
-		    <version>5.2.14.Final</version>
+			<groupId>org.hibernate</groupId>
+			<artifactId>hibernate-entitymanager</artifactId>
+			<version>5.2.14.Final</version>
 		</dependency>
 		<dependency>
-		    <groupId>javax.mail</groupId>
-		    <artifactId>mail</artifactId>
-		    <version>1.4</version>
+			<groupId>javax.mail</groupId>
+			<artifactId>mail</artifactId>
+			<version>1.4</version>
 		</dependency>
 		<dependency>
 			<groupId>org.apache.commons</groupId>
@@ -38,7 +41,7 @@
 		<dependency>
 			<groupId>org.jmockit</groupId>
 			<artifactId>jmockit</artifactId>
-			<version>1.38</version>
+			<version>${jmockit.version}</version>
 			<scope>test</scope>
 		</dependency>
 		<dependency>
@@ -47,10 +50,26 @@
 			<version>4.12</version>
 			<scope>test</scope>
 		</dependency>
+		<!-- Mockito library is included automatically as part of powermock below, uncomment
+			if you are not using PowerMock with Mockito -->
+		<!-- 
 		<dependency>
-		    <groupId>org.mockito</groupId>
-		    <artifactId>mockito-core</artifactId>
-		    <version>2.15.0</version>
+			<groupId>org.mockito</groupId>
+			<artifactId>mockito-core</artifactId>
+			<version>${mockito.version}</version>
+		</dependency>
+		 -->
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-module-junit4</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
+		</dependency>
+		<dependency>
+			<groupId>org.powermock</groupId>
+			<artifactId>powermock-api-mockito2</artifactId>
+			<version>${powermock.version}</version>
+			<scope>test</scope>
 		</dependency>
 	</dependencies>
 	<build>
@@ -86,7 +105,7 @@
 				<artifactId>findbugs-maven-plugin</artifactId>
 				<version>3.0.2</version>
 				<configuration>
-					<failOnError>false</failOnError>
+					<failOnError>true</failOnError>
 				</configuration>
 				<executions>
 					<execution>
@@ -105,11 +124,18 @@
 					<sourceEncoding>utf-8</sourceEncoding>
 					<minimumTokens>100</minimumTokens>
 					<targetJdk>1.7</targetJdk>
-					<failOnViolation>false</failOnViolation>
+					<failOnViolation>true</failOnViolation>
 					<!-- <excludes> <exclude>**/*Bean.java</exclude> <exclude>**/generated/*.java</exclude> 
 						</excludes> <excludeRoots> <excludeRoot>target/generated-sources/stubs</excludeRoot> 
 						</excludeRoots> -->
 				</configuration>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>check</goal>
+                        </goals>
+                    </execution>
+                </executions>
 			</plugin>
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>

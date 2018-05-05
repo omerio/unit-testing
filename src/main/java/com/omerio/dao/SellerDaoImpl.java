@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.dao;
 
 import javax.persistence.EntityManager;
@@ -18,12 +15,12 @@ import com.omerio.model.Seller;
 @Repository
 @Transactional
 public class SellerDaoImpl implements SellerDao {
-	
-	@PersistenceContext
-	private EntityManager entityManager;
-	
-	public Seller findById(Long sellerId) {
-		return entityManager.find(Seller.class, sellerId);
-	}
+
+    @PersistenceContext
+    private EntityManager entityManager;
+
+    public Seller findById(Long sellerId) {
+        return entityManager.find(Seller.class, sellerId);
+    }
 
 }

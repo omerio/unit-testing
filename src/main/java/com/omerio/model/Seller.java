@@ -1,6 +1,3 @@
-/**
- * 
- */
 package com.omerio.model;
 
 import java.io.Serializable;
@@ -16,50 +13,50 @@ import javax.persistence.Id;
  */
 @Entity
 public class Seller implements Serializable {
-	
-	private static final long serialVersionUID = 6227575431859385950L;
+
+    private static final long serialVersionUID = 6227575431859385950L;
 
     @Id
     @GeneratedValue
-	private Long id;
-	
-	private String name;
-	
-	private String emailAddress;
-	
-	private BigDecimal deliveryFees;
+    private Long id;
 
-	public Long getId() {
-		return id;
-	}
+    private String name;
 
-	public void setId(Long id) {
-		this.id = id;
-	}
+    private String emailAddress;
 
-	public String getName() {
-		return name;
-	}
+    private BigDecimal deliveryFees;
 
-	public void setName(String name) {
-		this.name = name;
-	}
+    public Long getId() {
+        return id;
+    }
 
-	public String getEmailAddress() {
-		return emailAddress;
-	}
+    public void setId(Long id) {
+        this.id = id;
+    }
 
-	public void setEmailAddress(String emailAddress) {
-		this.emailAddress = emailAddress;
-	}
+    public String getName() {
+        return name;
+    }
 
-	public BigDecimal getDeliveryFees() {
-		return deliveryFees;
-	}
+    public void setName(String name) {
+        this.name = name;
+    }
 
-	public void setDeliveryFees(BigDecimal deliveryFees) {
-		this.deliveryFees = deliveryFees;
-	}
+    public String getEmailAddress() {
+        return emailAddress;
+    }
 
-	
+    public void setEmailAddress(String emailAddress) {
+        this.emailAddress = emailAddress;
+    }
+
+    public BigDecimal getDeliveryFees() {
+        return deliveryFees;
+    }
+
+    public void setDeliveryFees(BigDecimal deliveryFees) {
+        this.deliveryFees = deliveryFees;
+    }
+
+
 }
